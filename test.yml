@@ -1,11 +1,44 @@
 openapi: 3.0.0
 info:
-  title: Mon API
+  title: STD24182
   version: 1.0.0
+  description: This is a specification of STD24182
+servers:
+  - url: 'http://127.0.0.1:8000'
 paths:
-  /hello:
+  /ping:
     get:
-      summary: Dire bonjour
+      summary: Retourne Pong
       responses:
         '200':
           description: Succès
+
+  /cars:
+    post:
+      summary: Créer une nouvelle voiture
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/Cars'
+components:
+  schemas:
+    Cars:
+      type: object
+      properties:
+        id:
+          type: string
+        brand:
+          type: string
+        model:
+          type: string
+        characteristics: Characteristic
+
+
+
+
+
+
